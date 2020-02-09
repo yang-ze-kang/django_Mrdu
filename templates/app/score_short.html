@@ -1,0 +1,52 @@
+{% load static %}
+<!-- JavaScript files-->
+<script src="{% static 'web/echarts/echarts.min.js' %}"></script>
+<div id="short" style="width: 350px;height:350px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('short'));
+    var option = {
+        legend: {
+            data: 'bar',
+            align: 'left'
+        },
+        toolbox: {
+            // y: 'bottom',
+            feature: {
+                magicType: {
+                    type: ['stack', 'tiled']
+                },
+                dataView: {},
+                saveAsImage: {
+                    pixelRatio: 2
+                }
+            }
+        },
+        tooltip: {},
+        xAxis: {
+            name: '测试',
+                data:'测试时间近>远',
+            silent: false,
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+            name: '分数',
+        },
+        series: [{
+            name: '分数',
+            type: 'bar',
+            data: [{{ score.score.6.score }}, {{ score.score.5.score }}, {{ score.score.4.score }}, {{ score.score.3.score }},
+                {{ score.score.2.score }}, {{ score.score.1.score }}, {{ score.score.0.score }}],
+            animationDelay: function (idx) {
+                return idx * 10;
+            }
+        }],
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: function (idx) {
+            return idx * 5;
+        }
+    };
+    myChart.setOption(option);
+</script>

@@ -1,0 +1,553 @@
+{% extends 'web/index/base.html' %}
+{% load static %}
+{% load django_tables2 %}
+{% block head %}
+    <!-- JavaScript files-->
+    <script src="{% static 'web/echarts/echarts.min.js' %}"></script>
+    <!--时间选择插件-->
+    <link rel="stylesheet" href="{% static "web/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" %}">
+    <!--日期选择插件-->
+    <link rel="stylesheet" href="{% static "web/bootstrap-datepicker/bootstrap-datepicker3.min.css" %}">
+    <link rel="stylesheet" href="{% static "web/css/azzara.min.css" %}">
+{% endblock %}
+{% block content %}
+    <div class="content-inner" xmlns="http://www.w3.org/1999/html">
+        <!-- Page Header-->
+        <header class="page-header">
+            <div class="container-fluid">
+                <h2 class="no-margin-bottom">测试分数</h2>
+            </div>
+        </header>
+        <!-- Breadcrumb-->
+        <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'web:index' %}">Home</a></li>
+                <li class="breadcrumb-item active">测试分数</li>
+            </ul>
+        </div>
+        <!-- Page Content -->
+        <div class="col-lg-auto">
+            <div class="card">
+                <div class="card-header"><h4>测试详情</h4></div>
+                <div class="card-body">
+
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active">
+
+                            <a href='{% url 'web:table' %}'>
+                                <button id="score" class="btn">测试分数</button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url 'web:grand' %}'>
+                                <button id='grand' class="btn">宏表情测试</button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url 'web:grand' %}'>
+                                <button id='grand' class="btn">渐变测试</button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url 'web:grand' %}'>
+                                <button id='grand' class="btn">量表测试</button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url 'web:grand' %}'>
+                                <button id='grand' class="btn">点探测</button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url 'web:grand' %}'>
+                                <button id='grand' class="btn">Stroop测试</button>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href='{% url 'web:grand' %}'>
+                                <button id='grand' class="btn">短暂测试</button>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-auto">
+            <div class="polar-chart-example card">
+                <div class="card-close">
+                    <div class="dropdown">
+                        <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="dropdown-toggle"><i
+                                class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard9"
+                             class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                     class="dropdown-item remove">
+                            <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                class="fa fa-gear"></i>Edit</a></div>
+                    </div>
+                </div>
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">平均反应时间：{{ avg_time }}</h3>
+                </div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-auto">
+            <div class="polar-chart-example card">
+                <div class="card-close">
+                    <div class="dropdown">
+                        <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="dropdown-toggle"><i
+                                class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard9"
+                             class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                     class="dropdown-item remove">
+                            <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                class="fa fa-gear"></i>Edit</a></div>
+                    </div>
+                </div>
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">最长反应时间：{{ max_time }}</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-sm">
+                            <thead>
+                            <tr>
+                                <th>测试时间</th>
+                                <th>测试分数</th>
+                                <th>测试图占比高</th>
+                                <th>测试情绪占比高</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for test in pics %}
+                                <tr>
+                                <th>{{ test.0.date }}</th>
+                                <th>{{ test.0.score }}</th>
+                                <th>
+                                    {% for pic in test.1 %}
+                                        <a href="{{ MEDIA_URL }}{{ pic.img }}">
+                                            <button class="btn btn-light btn-sm">{{ pic.name }}</button>
+                                        </a>
+                                    {% endfor %}
+                                </th>
+                                <th>{{ test.2 }}</th>
+                            {% endfor %}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-auto">
+            <div class="polar-chart-example card">
+                <div class="card-close">
+                    <div class="dropdown">
+                        <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="dropdown-toggle"><i
+                                class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard9"
+                             class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                     class="dropdown-item remove">
+                            <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                class="fa fa-gear"></i>Edit</a></div>
+                    </div>
+                </div>
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">最短反应时间：{{ min_time }}</h3>
+                </div>
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-auto">
+            <div class="polar-chart-example card">
+                <div class="card-close">
+                    <div class="dropdown">
+                        <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="dropdown-toggle"><i
+                                class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard9"
+                             class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                     class="dropdown-item remove">
+                            <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                class="fa fa-gear"></i>Edit</a></div>
+                    </div>
+                </div>
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">平均分数，最高分数，最低分数</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-sm">
+                            <thead>
+                            <tr>
+                                <th>平均分数</th>
+                                <th>最高分数</th>
+                                <th>最低分数</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th>{{ avg_score }}</th>
+                                <th>{{ max_score }}</th>
+                                <th>{{ min_score }}</th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-auto">
+            <div class="polar-chart-example card">
+                <div class="card-close">
+                    <div class="dropdown">
+                        <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="dropdown-toggle"><i
+                                class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard9"
+                             class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                     class="dropdown-item remove">
+                            <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                class="fa fa-gear"></i>Edit</a></div>
+                    </div>
+                </div>
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">情绪选择偏离度</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-sm">
+                            <thead>
+                            <tr>
+                                <th>测试id</th>
+                                <th>测试时间</th>
+                                <th>最大值/最小值</th>
+                                <th>测试位置</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for tes in devia %}
+                                <tr>
+                                    <th scope="row">{{ tes.测试id }}</th>
+                                    <td>{{ tes.测试时间 }}</td>
+                                    <td>{{ tes.最大值 }}</td>
+                                    <td><a href="{{ MEDIA_URL }}{{ tes.测试位置.1.0.img }}">
+                                        <button class="btn btn-light btn-sm">{{ tes.测试位置.0 }}</button>
+                                    </a>{{ tes.测试位置.1.0.name }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="dev" style="width: 450px;height:300px;"></div>
+                    <script>
+                        var myChart = echarts.init(document.getElementById('dev'));
+                        var labelRight = {
+                            position: ''
+                        };
+                        option = {
+                            title: {
+                                text: '偏离序列',
+                            },
+                            tooltip: {
+                                trigger: 'axis',
+                                axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                    type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                                }
+                            },
+                            grid: {
+                                top: 80,
+                                bottom: 30
+                            },
+                            xAxis:
+                                {
+                                    type: 'category',
+                                    axisLine: {show: false},
+                                    axisLabel: {show: false},
+                                    axisTick: {show: false},
+                                    splitLine: {show: false},
+                                    data: {{ devia.0.偏离序列 }},  // 能够操作不同的偏离度最好
+                                }
+
+                            ,
+                            yAxis: {
+                                type: 'value',
+                                position: 'top',
+                                splitLine: {
+                                    lineStyle: {
+                                        type: 'dashed'
+                                    }
+                                }
+                            },
+                            series: [
+                                {
+                                    name: '偏离程度',
+                                    type: 'bar',
+                                    stack: '总量',
+                                    label: {
+                                        show: true,
+                                        formatter: '{b}'
+                                    },
+                                    data:{{ devia.0.偏离序列 }},
+                                }
+                            ]
+                        };
+                        myChart.setOption(option);
+                    </script>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-auto">
+            <div class="polar-chart-example card">
+                <div class="card-close">
+                    <div class="dropdown">
+                        <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" class="dropdown-toggle"><i
+                                class="fa fa-ellipsis-v"></i></button>
+                        <div aria-labelledby="closeCard9"
+                             class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                     class="dropdown-item remove">
+                            <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                class="fa fa-gear"></i>Edit</a></div>
+                    </div>
+                </div>
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="h4">测试详情</h3>
+                </div>
+                <div class="card-body">
+                    <form action="{% url "web:grand" %}" method="post">
+                        <div class="form-group">
+                            <div class='col-5'>
+                                <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+                                    <label for="timerange1">从</label>
+                                    <input id="timerange1" name="timerange1" type="text"
+                                           class="form-control datetimepicker-input"
+                                           data-target="#datetimepicker7"/>
+
+                                    <div class="input-group-append" data-target="#datetimepicker7"
+                                         data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-5'>
+                                <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+                                    <label for="timerange2">至</label>
+                                    <input id="timerange2" name="timerange2" type="text"
+                                           class="form-control datetimepicker-input"
+                                           data-target="#datetimepicker8"/>
+
+                                    <div class="input-group-append" data-target="#datetimepicker8"
+                                         data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id='timerange'>提交</button>
+
+                        <div class="table-responsive">
+                            <table id="multi-filter-select" class="display table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th># 测试id</th>
+                                    <th>测试时间</th>
+                                    <th>分数</th>
+                                    <th>测试图片</th>
+                                    <th>反应时间</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th># 测试id</th>
+                                    <th>测试时间</th>
+                                    <th>分数</th>
+                                    <th>测试图片</th>
+                                    <th>反应时间</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                {% for t in data %}
+                                    <tr>
+                                        <td>{{ t.id }}</td>
+                                        <td>{{ t.date }}</td>
+                                        <td>{{ t.score }}</td>
+                                        <td>{{ t.picture }}</td>
+                                        <td>{{ t.reaction_time }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static "web/bootstrap-datepicker/main.min.js" %}"></script>
+    <script src="{% static "web/vendor/bootstrap/js/moment-with-locales.min.js" %}"></script>
+    <script src="{% static "web/vendor/bootstrap/js/tempusdominus-bootstrap-4.js" %}"></script>
+    <script>$(function () {
+        $('#datetimepicker7').datetimepicker({
+            locale: moment.locale(),
+            format: 'YYYY-MM-DD',
+            useCurrent: false,
+            allowInputToggle: true,
+            focusOnShow: true,
+            widgetPositioning: {
+                horizontal: 'auto',
+                vertical: 'auto'
+            },
+            buttons: {
+                showToday: false,
+                showClear: false,
+                showClose: false
+            },
+            viewMode: 'days',
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-arrow-up',
+                down: 'fa fa-arrow-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-calendar-check-o',
+                clear: 'fa fa-delete',
+                close: 'fa fa-times'
+            },
+
+        });
+        $('#datetimepicker8').datetimepicker({
+            locale: moment.locale(),
+            format: 'YYYY-MM-DD',
+            useCurrent: false,
+            allowInputToggle: true,
+            focusOnShow: true,
+            widgetPositioning: {
+                horizontal: 'auto',
+                vertical: 'auto'
+            },
+            buttons: {
+                showToday: false,
+                showClear: false,
+                showClose: false
+            },
+            viewMode: 'days',
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-arrow-up',
+                down: 'fa fa-arrow-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-calendar-check-o',
+                clear: 'fa fa-delete',
+                close: 'fa fa-times'
+            },
+        });
+        $("#datetimepicker7").on("change.datetimepicker", function (e) {
+            $('#datetimepicker8').datetimepicker('minDate', e.date);
+        });
+        $("#datetimepicker8").on("change.datetimepicker", function (e) {
+            $('#datetimepicker7').datetimepicker('maxDate', e.date);
+        });
+    });</script>
+
+    <!-- jQuery UI -->
+    <script src="{% static "web/vendor/tables/jquery.ui.touch-punch.min.js" %}"></script>
+    <script src="{% static "web/vendor/tables/jquery-ui.min.js" %}"></script>
+    <!-- Bootstrap Toggle -->
+    <script src="{% static "web/vendor/tables/bootstrap-toggle.min.js" %}"></script>
+    <!-- jQuery Scrollbar -->
+    <script src="{% static "web/vendor/tables/jquery.scrollbar.min.js" %}"></script>
+    <!-- Datatables -->
+    <script src="{% static "web/vendor/tables/datatables.min.js" %}"></script>
+    <!-- Azzara JS -->
+    <script src="{% static "web/vendor/tables/ready.min.js" %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#multi-filter-select').DataTable({
+                "pageLength": 10,
+                initComplete: function () {
+                    this.api().columns().every(function () {
+                        var column = this;
+                        var select = $('<select class="form-control"><option value=""></option></select>')
+                            .appendTo($(column.footer()).empty())
+                            .on('change', function () {
+                                var val = $.fn.dataTable.util.escapeRegex(
+                                    $(this).val()
+                                );
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                        column.data().unique().sort().each(function (d, j) {
+                            select.append('<option value="' + d + '">' + d + '</option>')
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+    <script>
+        // using jQuery
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        var csrftoken = getCookie('csrftoken');
+
+        function csrfSafeMethod(method) {
+            // 这些HTTP方法不要求CSRF包含
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#timerange").click(function () {
+                var a = $("#timerange1").val();
+                var b = $("#timerange2").val();
+
+                $.get("{% url "web:grand" %}", {'timerange1': a, 'timerange2': b}, function (ret) {
+                    $('#multi-filter-select').html(ret)
+                })
+            });
+        });
+    </script>
+{% endblock %}

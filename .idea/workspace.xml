@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="197d1c52-60e0-4528-b527-8ee6b397c65f" name="默认更改列表" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1QV1b11gnKQmMxtHkKFIi3w14KU" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/DRFDocs-master" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\web\static\web\vendor\tables" />
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\web\static\web\css" />
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\web\media\avatar" />
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\web\static\web" />
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\web\static\web\vendor\bootstrap\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\templates\web\table" />
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\web\static\web\css" />
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\web\static\web\vendor\tables" />
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\web\static" />
+      <recent name="C:\Users\gaoyi\PycharmProjects\app_web\web\media" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.a">
+    <configuration name="1.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/app_web/templates/1.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="a" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="app_web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/web" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\gaoyi\PycharmProjects\app_web\web\scaleQues.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="app_web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="scratch_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="app_web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="app_web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="app_web" type="Python.DjangoServer" factoryName="Django server">
+      <module name="app_web" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="app_web.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.a" />
+        <item itemvalue="Python.manage" />
+        <item itemvalue="Python.test" />
+        <item itemvalue="Python.scratch_2" />
+        <item itemvalue="JavaScript Debug.1.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="197d1c52-60e0-4528-b527-8ee6b397c65f" name="默认更改列表" comment="" />
+      <created>1567841016128</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1567841016128</updated>
+      <workItem from="1567841017296" duration="11162000" />
+      <workItem from="1567858859471" duration="7000" />
+      <workItem from="1567939883680" duration="5871000" />
+      <workItem from="1567946237950" duration="4066000" />
+      <workItem from="1568082341255" duration="88000" />
+      <workItem from="1568338064407" duration="6973000" />
+      <workItem from="1568348101017" duration="20321000" />
+      <workItem from="1568377575566" duration="8855000" />
+      <workItem from="1568422132372" duration="10890000" />
+      <workItem from="1568434844809" duration="13436000" />
+      <workItem from="1568449050811" duration="5016000" />
+      <workItem from="1568463331748" duration="9000" />
+      <workItem from="1568472349557" duration="278000" />
+      <workItem from="1568507965978" duration="210000" />
+      <workItem from="1568517463804" duration="604000" />
+      <workItem from="1568521069482" duration="5366000" />
+      <workItem from="1568551026861" duration="6297000" />
+      <workItem from="1568630792188" duration="157000" />
+      <workItem from="1568643281245" duration="1539000" />
+      <workItem from="1568686110141" duration="303000" />
+      <workItem from="1568897925440" duration="950000" />
+      <workItem from="1568982877011" duration="729000" />
+      <workItem from="1569027575384" duration="304000" />
+      <workItem from="1569028875417" duration="254000" />
+      <workItem from="1569032697106" duration="2882000" />
+      <workItem from="1569047483622" duration="3542000" />
+      <workItem from="1569056931054" duration="338000" />
+      <workItem from="1569120883479" duration="4751000" />
+      <workItem from="1569129276621" duration="3656000" />
+      <workItem from="1569135320214" duration="3640000" />
+      <workItem from="1569139228579" duration="17000" />
+      <workItem from="1569156915747" duration="3208000" />
+      <workItem from="1569239569694" duration="3616000" />
+      <workItem from="1569324824205" duration="8203000" />
+      <workItem from="1569387417221" duration="19445000" />
+      <workItem from="1569410788191" duration="4422000" />
+      <workItem from="1569422105679" duration="448000" />
+      <workItem from="1569425099466" duration="244000" />
+      <workItem from="1569499758421" duration="9923000" />
+      <workItem from="1569510346732" duration="2143000" />
+      <workItem from="1569545802542" duration="4342000" />
+      <workItem from="1569561374391" duration="21479000" />
+      <workItem from="1569589826201" duration="473000" />
+      <workItem from="1569593767090" duration="4305000" />
+      <workItem from="1569671674660" duration="13352000" />
+      <workItem from="1569716481552" duration="755000" />
+      <workItem from="1569722848677" duration="1610000" />
+      <workItem from="1569748844831" duration="1464000" />
+      <workItem from="1569759285915" duration="3596000" />
+      <workItem from="1569765031466" duration="568000" />
+      <workItem from="1569765644017" duration="2061000" />
+      <workItem from="1569819638386" duration="86000" />
+      <workItem from="1569826423946" duration="4724000" />
+      <workItem from="1569891247983" duration="2998000" />
+      <workItem from="1569895008035" duration="595000" />
+      <workItem from="1569911074192" duration="4597000" />
+      <workItem from="1570021168837" duration="2019000" />
+      <workItem from="1570025245151" duration="2673000" />
+      <workItem from="1570065113394" duration="5532000" />
+      <workItem from="1570087892126" duration="32000" />
+      <workItem from="1570100915889" duration="1183000" />
+      <workItem from="1570105186377" duration="307000" />
+      <workItem from="1570186124786" duration="1419000" />
+      <workItem from="1570319953170" duration="1137000" />
+      <workItem from="1570329534835" duration="3000" />
+      <workItem from="1570329745397" duration="2000" />
+      <workItem from="1570345855360" duration="5434000" />
+      <workItem from="1570360145007" duration="11409000" />
+      <workItem from="1570406883111" duration="5786000" />
+      <workItem from="1570413061857" duration="2620000" />
+      <workItem from="1570416038052" duration="1097000" />
+      <workItem from="1570423247141" duration="165000" />
+      <workItem from="1570428820887" duration="15572000" />
+      <workItem from="1570500522144" duration="603000" />
+      <workItem from="1570501673057" duration="100000" />
+      <workItem from="1570534544834" duration="2984000" />
+      <workItem from="1570540865190" duration="1857000" />
+      <workItem from="1570597483834" duration="1807000" />
+      <workItem from="1570605870406" duration="2170000" />
+      <workItem from="1570608837691" duration="998000" />
+      <workItem from="1570611485006" duration="1010000" />
+      <workItem from="1570707496218" duration="2584000" />
+      <workItem from="1570842806413" duration="103000" />
+      <workItem from="1570854225331" duration="19000" />
+      <workItem from="1570886007146" duration="670000" />
+      <workItem from="1570966353863" duration="23000" />
+      <workItem from="1571233343679" duration="2086000" />
+      <workItem from="1571235645588" duration="280000" />
+      <workItem from="1571361137345" duration="906000" />
+      <workItem from="1571381951104" duration="486000" />
+      <workItem from="1571383451766" duration="4630000" />
+      <workItem from="1571450688941" duration="886000" />
+      <workItem from="1571538771765" duration="64000" />
+      <workItem from="1572061096214" duration="107000" />
+      <workItem from="1572067980574" duration="2107000" />
+      <workItem from="1572070403995" duration="2373000" />
+      <workItem from="1574563825462" duration="117000" />
+      <workItem from="1574663856486" duration="11000" />
+      <workItem from="1575038034920" duration="91000" />
+      <workItem from="1578383457624" duration="2445000" />
+      <workItem from="1578820914008" duration="832000" />
+      <workItem from="1578876094083" duration="7550000" />
+      <workItem from="1578886656433" duration="1894000" />
+      <workItem from="1578967975704" duration="7132000" />
+      <workItem from="1578982595129" duration="8475000" />
+      <workItem from="1579163526024" duration="328000" />
+      <workItem from="1579163976376" duration="115000" />
+      <workItem from="1579248309748" duration="15155000" />
+      <workItem from="1579938919486" duration="3444000" />
+      <workItem from="1580125670075" duration="40000" />
+      <workItem from="1580178779330" duration="2700000" />
+      <workItem from="1580190795538" duration="12809000" />
+      <workItem from="1580209582609" duration="5759000" />
+      <workItem from="1580264319813" duration="5066000" />
+      <workItem from="1580284375762" duration="7236000" />
+      <workItem from="1580350527786" duration="5191000" />
+      <workItem from="1580368853001" duration="8813000" />
+      <workItem from="1580436976321" duration="4802000" />
+      <workItem from="1580458011888" duration="4494000" />
+      <workItem from="1580521562794" duration="4805000" />
+      <workItem from="1580538671006" duration="10258000" />
+      <workItem from="1580559265398" duration="7097000" />
+      <workItem from="1580609194929" duration="6816000" />
+      <workItem from="1580624856862" duration="2654000" />
+      <workItem from="1580628652893" duration="393000" />
+      <workItem from="1581070713677" duration="1360000" />
+      <workItem from="1581077722958" duration="8850000" />
+      <workItem from="1581128942180" duration="6097000" />
+      <workItem from="1581145164355" duration="4340000" />
+      <workItem from="1581150961747" duration="2938000" />
+      <workItem from="1581161252675" duration="2992000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/app_web$tests.coverage" NAME="tests Coverage Results" MODIFIED="1569332657565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web" />
+    <SUITE FILE_PATH="coverage/app_web$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1569891773427" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/app_web$views.coverage" NAME="views Coverage Results" MODIFIED="1569414601446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web" />
+    <SUITE FILE_PATH="coverage/app_web$manage.coverage" NAME="manage Coverage Results" MODIFIED="1579253318330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/app_web$test.coverage" NAME="test Coverage Results" MODIFIED="1572071342575" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/app_web$a.coverage" NAME="a Coverage Results" MODIFIED="1580540045462" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/web" />
+  </component>
+</project>

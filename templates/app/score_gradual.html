@@ -1,0 +1,51 @@
+{% load static %}
+    <!-- JavaScript files-->
+    <script src="{% static 'web/echarts/echarts.min.js' %}"></script>
+<div id="gradual" style="width: 350px;height:350px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('gradual'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        dataset: {
+            source: [
+                ['score', 'score', 'id'],
+                [{{ score.score.6.score }}, {{ score.score.6.score }}, '测'],
+                [{{ score.guadual.5.score }}, {{ score.score.5.score }}, '试'],
+                [{{ score.guadual.4.score }}, {{ score.score.4.score }}, '时'],
+                [{{ score.score.3.score }}, {{ score.score.3.score }}, '间'],
+                [{{ score.score.2.score }}, {{ score.score.2.score }}, '近'],
+                [{{ score.score.1.score }}, {{ score.score.1.score }}, '|'],
+                [{{ score.score.0.score }}, {{ score.score.0.score }}, '远'],
+            ]
+        },
+        grid: {containLabel: true},
+        xAxis: {name: '分数'},
+        yAxis: {name: '测试次数', type: 'category'},
+        visualMap: {
+            orient: 'horizontal',
+            left: 'center',
+            min: 0,
+            max: 100,
+            text: ['High Score', 'Low Score'],
+            // Map the score column to color
+            dimension: 0,
+            inRange: {
+                color: ['#D7DA8B', '#E15457']
+            }
+        },
+        series: [
+            {
+                type: 'bar',
+                encode: {
+                    // Map the "amount" column to X axis.
+                    x: 'score',
+                    // Map the "product" column to Y axis
+                    y: 'id'
+                }
+            }
+        ]
+    };        // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>

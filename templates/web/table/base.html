@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="{% static "web/vendor/bootstrap/css/bootstrap.min.css" %}">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="{% static "web/vendor/font-awesome/css/font-awesome.min.css" %}">
+    <!-- Fontastic Custom icon font-->
+    <link rel="stylesheet" href="{% static "web/css/fontastic.css" %}">
+    <!-- Google fonts - Poppins -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{% static "web/css/style.default.css" %}" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="{% static "web/css/custom.css" %}">
+    <!-- Favicon图标-->
+    <link rel="shortcut icon" href="{% static "app_logo.png" %}">
+    <link href="{% static "web/vendor/bootstrap/css/materialdesignicons.min.css" %}" rel="stylesheet">
+    <!-- JavaScript files-->
+    <script src="{% static 'web/echarts/echarts.min.js' %}"></script>
+    <!--时间选择插件-->
+    <link rel="stylesheet" href="{% static "web/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css" %}">
+    <!--日期选择插件-->
+    <link rel="stylesheet" href="{% static "web/bootstrap-datepicker/bootstrap-datepicker3.min.css" %}">
+    <link rel="stylesheet" href="{% static "web/css/azzara.min.css" %}">
+    <link rel="stylesheet" href="{% static "web/css/demorow.css" %}">
+    {% block head %} {% endblock %}
+</head>
+<body>
+<!-- JavaScript files-->
+<script src="{% static "web/vendor/jquery.min.js" %}"></script>
+<script src="{% static "web/vendor/popper/umd/popper.min.js" %}"></script>
+<script src="{% static "web/vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "web/vendor/jquery.cookie/jquery.cookie.js" %}"></script>
+<script src="{% static "web/vendor/chart.js/Chart.min.js" %}"></script>
+<script src="{% static "web/vendor/jquery-validation/jquery.validate.min.js" %}"></script>
+<!-- Main File-->
+<script src="{% static "web/js/front.js" %}"></script>
+<div class="page">
+    <!-- Main Navbar-->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-holder d-flex align-items-center justify-content-between">
+                    <!-- Navbar Header-->
+                    <div class="navbar-header">
+                        <!-- Navbar Brand -->
+                        <a href="{% url 'web:index' %}" class="navbar-brand d-none d-sm-inline-block">
+                            <div class="brand-text d-none d-lg-inline-block">
+                                <span><strong>Dashboard</strong></span></div>
+                            <div class="brand-text d-none d-sm-inline-block d-lg-none"><strong>BD</strong></div>
+                        </a>
+                        <!-- Toggle Button-->
+                        <a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
+                    </div>
+                    <!-- Navbar Menu -->
+                    <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
+                        <!-- Logout    -->
+                        <li class="nav-item"><a href="{% url 'web:logout' %}" class="nav-link logout"> <span
+                                class="d-none d-sm-inline">Logout</span><i class="fa fa-sign-out"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="page-content d-flex align-items-stretch">
+        <!-- Side Navbar -->
+        <nav class="side-navbar">
+            <!-- Sidebar Header-->
+            <div class="sidebar-header d-flex align-items-center">
+                <div class="avatar"><img src="{{ MEDIA_URL }}{{ request.user.avatar }}" alt="..."
+                                         class="img-fluid rounded-circle"></div>
+                <div class="title">
+                    <h1 class="h4">{{ request.user.username }}</h1>
+                    <p>欢迎！</p>
+                </div>
+            </div>
+            <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
+            <ul class="list-unstyled">
+
+                <!--class="active"-->
+
+                <li><a href="{% url 'web:index' %}"> <i class="icon-home"></i>首页 </a></li>
+                <li><a href="{% url 'web:analysis' %}"> <i class="icon-grid"></i>数据分类</a></li>
+                <li><a href="{% url 'web:presentation' %}"> <i class="fa fa-bar-chart"></i>数据可视化</a></li>
+                <li><a href="{% url 'web:profile' %}"> <i class="icon-padnote"></i>个人中心</a></li>
+                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i
+                        class="icon-interface-windows"></i>测试分数</a>
+                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
+                        <li><a href="{% url 'web:table' %}">综合测试成绩</a></li>
+                        <li><a href="{% url 'web:grand' %}">宏表情</a></li>
+                        <li><a href="{% url 'web:gradual' %}">渐变测试</a></li>
+                        <li><a href="{% url 'web:point' %}">点探测</a></li>
+                        <li><a href="{% url 'web:short' %}">短暂测试</a></li>
+                        <li><a href="{% url 'web:scale' %}">量表测试</a></li>
+                        <li><a href="{% url 'web:stroop' %}">Stroop测试</a></li>
+                    </ul>
+                </li>
+
+
+            </ul>
+            <span class="heading">Extras</span>
+            <ul class="list-unstyled">
+                <li><a href="#"> <i class="icon-flask"></i>Demo </a></li>
+                <li><a href="#"> <i class="icon-screen"></i>Demo </a></li>
+                <li><a href="#"> <i class="icon-mail"></i>Demo </a></li>
+                <li><a href="#"> <i class="icon-picture"></i>Demo </a></li>
+            </ul>
+        </nav>
+
+        <div class="content-inner">
+            <!-- Page Header-->
+            <header class="page-header">
+                <div class="container-fluid">
+                    <h2 class="no-margin-bottom">测试分数</h2>
+                </div>
+            </header>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-holder container-fluid">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'web:index' %}">Home</a></li>
+                    <li class="breadcrumb-item active">测试分数</li>
+                </ul>
+            </div>
+            <!-- Page Content -->
+            <p></p>
+            <script type="text/javascript" src="{% static "web/bootstrap-datepicker/main.min.js" %}"></script>
+            <script src="{% static "web/vendor/bootstrap/js/moment-with-locales.min.js" %}"></script>
+            <script src="{% static "web/vendor/bootstrap/js/tempusdominus-bootstrap-4.js" %}"></script>
+            <script>$(function () {
+                $('#datetimepicker7').datetimepicker({
+                    locale: moment.locale(),
+                    format: 'YYYY-MM-DD',
+                    useCurrent: false,
+                    allowInputToggle: true,
+                    focusOnShow: true,
+                    widgetPositioning: {
+                        horizontal: 'auto',
+                        vertical: 'auto'
+                    },
+                    buttons: {
+                        showToday: false,
+                        showClear: false,
+                        showClose: false
+                    },
+                    viewMode: 'days',
+                    icons: {
+                        time: 'fa fa-clock-o',
+                        date: 'fa fa-calendar',
+                        up: 'fa fa-arrow-up',
+                        down: 'fa fa-arrow-down',
+                        previous: 'fa fa-chevron-left',
+                        next: 'fa fa-chevron-right',
+                        today: 'fa fa-calendar-check-o',
+                        clear: 'fa fa-delete',
+                        close: 'fa fa-times'
+                    },
+
+                });
+                $('#datetimepicker8').datetimepicker({
+                    locale: moment.locale(),
+                    format: 'YYYY-MM-DD',
+                    useCurrent: false,
+                    allowInputToggle: true,
+                    focusOnShow: true,
+                    widgetPositioning: {
+                        horizontal: 'auto',
+                        vertical: 'auto'
+                    },
+                    buttons: {
+                        showToday: false,
+                        showClear: false,
+                        showClose: false
+                    },
+                    viewMode: 'days',
+                    icons: {
+                        time: 'fa fa-clock-o',
+                        date: 'fa fa-calendar',
+                        up: 'fa fa-arrow-up',
+                        down: 'fa fa-arrow-down',
+                        previous: 'fa fa-chevron-left',
+                        next: 'fa fa-chevron-right',
+                        today: 'fa fa-calendar-check-o',
+                        clear: 'fa fa-delete',
+                        close: 'fa fa-times'
+                    },
+                });
+                $("#datetimepicker7").on("change.datetimepicker", function (e) {
+                    $('#datetimepicker8').datetimepicker('minDate', e.date);
+                });
+                $("#datetimepicker8").on("change.datetimepicker", function (e) {
+                    $('#datetimepicker7').datetimepicker('maxDate', e.date);
+                });
+            });</script>
+
+            <!-- jQuery UI -->
+            <script src="{% static "web/vendor/tables/jquery.ui.touch-punch.min.js" %}"></script>
+            <script src="{% static "web/vendor/tables/jquery-ui.min.js" %}"></script>
+            <!-- Bootstrap Toggle -->
+            <script src="{% static "web/vendor/tables/bootstrap-toggle.min.js" %}"></script>
+            <!-- jQuery Scrollbar -->
+            <script src="{% static "web/vendor/tables/jquery.scrollbar.min.js" %}"></script>
+            <!-- Datatables -->
+            <script src="{% static "web/vendor/tables/datatables.min.js" %}"></script>
+            <!-- Azzara JS -->
+            <script src="{% static "web/vendor/tables/ready.min.js" %}"></script>
+            <script>
+                $(document).ready(function () {
+                    $('#multi-filter-select').DataTable({
+                        "pageLength": 10,
+                        initComplete: function () {
+                            this.api().columns().every(function () {
+                                var column = this;
+                                var select = $('<select class="form-control"><option value=""></option></select>')
+                                    .appendTo($(column.footer()).empty())
+                                    .on('change', function () {
+                                        var val = $.fn.dataTable.util.escapeRegex(
+                                            $(this).val()
+                                        );
+
+                                        column
+                                            .search(val ? '^' + val + '$' : '', true, false)
+                                            .draw();
+                                    });
+
+                                column.data().unique().sort().each(function (d, j) {
+                                    select.append('<option value="' + d + '">' + d + '</option>')
+                                });
+                            });
+                        }
+                    });
+                });
+            </script>
+            {% block content %}{% endblock %}
+</body>
+</html>

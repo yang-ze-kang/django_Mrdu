@@ -1,0 +1,49 @@
+<p style="">您的各项测试平均得分：{{ score.score.0.depression_score }}</p>
+{% load static %}
+<!-- JavaScript files-->
+<script src="{% static 'web/echarts/echarts.min.js' %}"></script>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 300px;height:300px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data: ['宏表情', '短暂识别', '点探测范式', 'Stroop', '渐变范式']
+        },
+        series: [
+            {
+                name: '分数',
+                type: 'pie',
+                radius: '55%',
+                center: ['50%', '60%'],
+                data: [
+                    {value:{{ score.score.0.grand }}, name: '宏表情'},
+                    {value:{{ score.score.0.gradual }}, name: '渐变范式'},
+                    {value:{{ score.score.0.point }}, name: '点探测范式'},
+                    {value:{{ score.score.0.stroop }}, name: 'Stroop'},
+                    {value:{{ score.score.0.short }}, name: '短暂识别'},
+                    {value:{{ score.score.0.scale }}, name: '量表测试'},
+                ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>

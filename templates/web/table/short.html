@@ -1,0 +1,373 @@
+{% extends 'web/table/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="col-lg-auto">
+        <div class="card">
+            <div class="card-header"><h4>测试详情</h4></div>
+            <div class="card-body">
+
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active">
+
+                        <a href='{% url 'web:table' %}'>
+                            <button id="score" class="btn">测试分数</button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='{% url 'web:grand' %}'>
+                            <button id='grand' class="btn">宏表情测试</button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='{% url 'web:gradual' %}'>
+                            <button id='grand' class="btn">渐变测试</button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='{% url 'web:scale' %}'>
+                            <button id='grand' class="btn">量表测试</button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='{% url 'web:point' %}'>
+                            <button id='grand' class="btn">点探测</button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='{% url 'web:stroop' %}'>
+                            <button id='grand' class="btn">Stroop测试</button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href='{% url 'web:short' %}'>
+                            <button id='grand' class="btn">短暂测试</button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-auto">
+        <div class="polar-chart-example card">
+            <div class="card-close">
+                <div class="dropdown">
+                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-toggle"><i
+                            class="fa fa-ellipsis-v"></i></button>
+                    <div aria-labelledby="closeCard9"
+                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                 class="dropdown-item remove">
+                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                            class="fa fa-gear"></i>Edit</a></div>
+                </div>
+            </div>
+            <div class="card-header d-flex align-items-center">
+                <h3 class="h4">平均反应时间：{{ avg_time }}</h3>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-auto">
+        <div class="polar-chart-example card">
+            <div class="card-close">
+                <div class="dropdown">
+                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-toggle"><i
+                            class="fa fa-ellipsis-v"></i></button>
+                    <div aria-labelledby="closeCard9"
+                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                 class="dropdown-item remove">
+                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                            class="fa fa-gear"></i>Edit</a></div>
+                </div>
+            </div>
+            <div class="card-header d-flex align-items-center">
+                <h3 class="h4">最长反应时间：{{ max_time }}</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-sm">
+                        <thead>
+                        <tr>
+                            <th>测试时间</th>
+                            <th>测试分数</th>
+                            <th>测试图占比高</th>
+                            <th>测试情绪占比高</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for test in pics %}
+                            <tr>
+                            <th>{{ test.0.date }}</th>
+                            <th>{{ test.0.score }}</th>
+                            <th>
+                                {% for pic in test.1 %}
+                                    <a href="{{ MEDIA_URL }}{{ pic.img }}">
+                                        <button class="btn btn-light btn-sm">{{ pic.name }}</button>
+                                    </a>
+                                {% endfor %}
+                            </th>
+                            <th>{{ test.2 }}</th>
+                        {% endfor %}
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-auto">
+        <div class="polar-chart-example card">
+            <div class="card-close">
+                <div class="dropdown">
+                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-toggle"><i
+                            class="fa fa-ellipsis-v"></i></button>
+                    <div aria-labelledby="closeCard9"
+                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                 class="dropdown-item remove">
+                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                            class="fa fa-gear"></i>Edit</a></div>
+                </div>
+            </div>
+            <div class="card-header d-flex align-items-center">
+                <h3 class="h4">最短反应时间：{{ min_time }}</h3>
+            </div>
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-auto">
+        <div class="polar-chart-example card">
+            <div class="card-close">
+                <div class="dropdown">
+                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-toggle"><i
+                            class="fa fa-ellipsis-v"></i></button>
+                    <div aria-labelledby="closeCard9"
+                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                 class="dropdown-item remove">
+                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                            class="fa fa-gear"></i>Edit</a></div>
+                </div>
+            </div>
+            <div class="card-header d-flex align-items-center">
+                <h3 class="h4">平均分数，最高分数，最低分数</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-sm">
+                        <thead>
+                        <tr>
+                            <th>平均分数</th>
+                            <th>最高分数</th>
+                            <th>最低分数</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th>{{ avg_score }}</th>
+                            <th>{{ max_score }}</th>
+                            <th>{{ min_score }}</th>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-auto">
+        <div class="polar-chart-example card">
+            <div class="card-close">
+                <div class="dropdown">
+                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-toggle"><i
+                            class="fa fa-ellipsis-v"></i></button>
+                    <div aria-labelledby="closeCard9"
+                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                 class="dropdown-item remove">
+                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                            class="fa fa-gear"></i>Edit</a></div>
+                </div>
+            </div>
+            <div class="card-header d-flex align-items-center">
+                <h3 class="h4">情绪选择偏离度</h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-sm">
+                        <thead>
+                        <tr>
+                            <th>测试id</th>
+                            <th>测试时间</th>
+                            <th>最大值/最小值</th>
+                            <th>测试位置</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for tes in devia %}
+                            <tr>
+                                <th scope="row">{{ tes.测试id }}</th>
+                                <td>{{ tes.测试时间 }}</td>
+                                <td>{{ tes.最大值 }}</td>
+                                <td><a href="{{ MEDIA_URL }}{{ tes.测试位置.1.0.img }}">
+                                    <button class="btn btn-light btn-sm">{{ tes.测试位置.0 }}</button>
+                                </a>{{ tes.测试位置.1.0.name }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div id="dev" style="width: 450px;height:300px;"></div>
+                <script>
+                    var myChart = echarts.init(document.getElementById('dev'));
+                    var labelRight = {
+                        position: ''
+                    };
+                    option = {
+                        title: {
+                            text: '偏离序列',
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                            }
+                        },
+                        grid: {
+                            top: 80,
+                            bottom: 30
+                        },
+                        xAxis:
+                            {
+                                type: 'category',
+                                axisLine: {show: false},
+                                axisLabel: {show: false},
+                                axisTick: {show: false},
+                                splitLine: {show: false},
+                                data: {{ devia.0.偏离序列 }},  // 能够操作不同的偏离度最好
+                            }
+
+                        ,
+                        yAxis: {
+                            type: 'value',
+                            position: 'top',
+                            splitLine: {
+                                lineStyle: {
+                                    type: 'dashed'
+                                }
+                            }
+                        },
+                        series: [
+                            {
+                                name: '偏离程度',
+                                type: 'bar',
+                                stack: '总量',
+                                label: {
+                                    show: true,
+                                    formatter: '{b}'
+                                },
+                                data:{{ devia.0.偏离序列 }},
+                            }
+                        ]
+                    };
+                    myChart.setOption(option);
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-auto">
+        <div class="polar-chart-example card">
+            <div class="card-close">
+                <div class="dropdown">
+                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" class="dropdown-toggle"><i
+                            class="fa fa-ellipsis-v"></i></button>
+                    <div aria-labelledby="closeCard9"
+                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                 class="dropdown-item remove">
+                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                            class="fa fa-gear"></i>Edit</a></div>
+                </div>
+            </div>
+            <div class="card-header d-flex align-items-center">
+                <h3 class="h4">测试详情</h3>
+            </div>
+            <div class="card-body">
+                <form action="{% url "web:short" %}" method="post">
+                    <div class="form-group" id="rowdiv">
+                        <div class='col-4'>
+                            <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+                                <label for="timerange1"><strong>从</strong></label>
+                                <input id="timerange1" name="timerange1" type="text"
+                                       class="form-control datetimepicker-input"
+                                       data-target="#datetimepicker7"/>
+
+                                <div class="input-group-append" data-target="#datetimepicker7"
+                                     data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-4'>
+                            <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+                                <label for="timerange2"><strong>至</strong></label>
+                                <input id="timerange2" name="timerange2" type="text"
+                                       class="form-control datetimepicker-input"
+                                       data-target="#datetimepicker8"/>
+
+                                <div class="input-group-append" data-target="#datetimepicker8"
+                                     data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id='timerange'>提交</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table id="multi-filter-select" class="display table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th># 测试id</th>
+                                <th>测试时间</th>
+                                <th>分数</th>
+                                <th>测试图片</th>
+                                <th>反应时间</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th># 测试id</th>
+                                <th>测试时间</th>
+                                <th>分数</th>
+                                <th>测试图片</th>
+                                <th>反应时间</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            {% for t in data %}
+                                <tr>
+                                    <td>{{ t.id }}</td>
+                                    <td>{{ t.date }}</td>
+                                    <td>{{ t.score }}</td>
+                                    <td>{{ t.picture }}</td>
+                                    <td>{{ t.reaction_time }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+#rowdiv {
+    display: flex;
+    justify-content: space-around
+}

@@ -1,0 +1,55 @@
+{% extends 'web/index/base.html' %}
+{% load static %}
+{% block head %}
+    <!-- Bootstrap core JavaScript -->
+    <script src={% static "web/vendor/jquery.min.js" %}></script>
+    <script src={% static "web/vendor/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+{% endblock %}
+{% block content %}
+    <div class="content-inner">
+        <!-- Page Header-->
+        <header class="page-header">
+            <div class="container-fluid">
+                <h2 class="no-margin-bottom">Data Process</h2>
+            </div>
+        </header>
+        <!-- Breadcrumb-->
+        <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'web:index' %}">Home</a></li>
+                <li class="breadcrumb-item active">Data Process</li>
+            </ul>
+        </div>
+        <!-- Page Content -->
+{% if request.user.is_superuser %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9 mb-5">
+                    <h2>图片修改</h2>
+                    <hr>
+                    <a href="{% url 'web:imgs_update' %}" class="btn btn-primary">Edit</a>
+                </div>
+            </div>
+                <h2>数据库中图片</h2>
+        <h3>Jaffe</h3>
+                <div class="row">
+                    {% for item in imgs %}
+                        <div class="col-md-2 mb-md-2">
+                            <div class="card mh-100">
+                                <img class="card-img-top" style="width: 175px;height: 175px" src="{{ item.img.url }}" alt="">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ item.name }}</h4>
+                                    <p>测试类型：{{ item.get_picsign_display }}</p>
+                                    <p>情绪数据：{{ item.emotion }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="#" class="btn btn-primary">Edit</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+    {% else %}
+    <p>您没有管理权限</p>
+    {% endif %}
+
+{% endblock %}

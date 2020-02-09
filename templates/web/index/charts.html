@@ -1,0 +1,503 @@
+{% extends 'web/index/base.html' %}
+{% load static %}
+{% block head %}
+    <!-- JavaScript files-->
+    <script src="{% static 'web/echarts/echarts.min.js' %}"></script>
+{% endblock %}
+{% block content %}
+    <div class="content-inner">
+        <!-- Page Header-->
+        <header class="page-header">
+            <div class="container-fluid">
+                <h2 class="no-margin-bottom">Charts</h2>
+            </div>
+        </header>
+        <!-- Breadcrumb-->
+        <div class="breadcrumb-holder container-fluid">
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href='{% url 'web:index' %}'>Home</a></li>
+                <li class="breadcrumb-item active">Charts</li>
+            </ul>
+        </div>
+        <!-- Charts Section-->
+        <section class="charts">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Polar Chart-->
+                    <div class="col-lg-6">
+                        <div class="polar-chart-example card">
+                            <div class="card-close">
+                                <div class="dropdown">
+                                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" class="dropdown-toggle"><i
+                                            class="fa fa-ellipsis-v"></i></button>
+                                    <div aria-labelledby="closeCard9"
+                                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                                 class="dropdown-item remove">
+                                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                            class="fa fa-gear"></i>Edit</a></div>
+                                </div>
+                            </div>
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">测试结果</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                <div id="main" style="width: 350px;height:350px;"></div>
+                                <script type="text/javascript">
+                                    // 基于准备好的dom，初始化echarts实例
+                                    var myChart = echarts.init(document.getElementById('main'));
+
+                                    // 指定图表的配置项和数据
+                                    var option = {
+                                        tooltip: {
+                                            trigger: 'item',
+                                            formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                        },
+                                        legend: {
+                                            orient: 'vertical',
+                                            left: 'left',
+                                            data: ['宏表情', '短暂识别', '点探测范式', 'Stroop', '渐变范式']
+                                        },
+                                        series: [
+                                            {
+                                                name: '分数',
+                                                type: 'pie',
+                                                radius: '55%',
+                                                center: ['50%', '60%'],
+                                                data: [
+                                                    {value:{{ score.score.0.grand }}, name: '宏表情'},
+                                                    {value:{{ score.score.0.gradual }}, name: '渐变范式'},
+                                                    {value:{{ score.score.0.point }}, name: '点探测范式'},
+                                                    {value:{{ score.score.0.stroop }}, name: 'Stroop'},
+                                                    {value:{{ score.score.0.short }}, name: '短暂识别'}
+                                                ],
+                                                itemStyle: {
+                                                    emphasis: {
+                                                        shadowBlur: 10,
+                                                        shadowOffsetX: 0,
+                                                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                                                    }
+                                                }
+                                            }
+                                        ]
+                                    };
+
+                                    // 使用刚指定的配置项和数据显示图表。
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="polar-chart-example card">
+                            <div class="card-close">
+                                <div class="dropdown">
+                                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" class="dropdown-toggle"><i
+                                            class="fa fa-ellipsis-v"></i></button>
+                                    <div aria-labelledby="closeCard9"
+                                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                                 class="dropdown-item remove">
+                                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                            class="fa fa-gear"></i>Edit</a></div>
+                                </div>
+                            </div>
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">宏表情</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                <div id="grand" style="width: 400px;height:350px;"></div>
+                                <script type="text/javascript">
+                                    // 基于准备好的dom，初始化echarts实例
+                                    var myChart = echarts.init(document.getElementById('grand'));
+
+                                    // 指定图表的配置项和数据
+                                    var option = {
+                                        tooltip: {
+                                            trigger: 'axis',
+                                            axisPointer: {
+                                                type: 'cross',
+                                                crossStyle: {
+                                                    color: '#999'
+                                                }
+                                            }
+                                        },
+                                        toolbox: {
+                                            feature: {
+                                                dataView: {show: true, readOnly: false},
+                                                magicType: {show: true, type: ['line', 'bar']},
+                                                restore: {show: true},
+                                                saveAsImage: {show: true},
+                                            }
+                                        },
+                                        legend: {
+                                            data: ['分数', '分数']
+                                        },
+                                        xAxis: [
+                                            {
+                                                type: 'category',
+                                                name: '测试\n次数',
+                                                data: [{{ score.grand.6.id }}, {{ score.grand.5.id }},
+                                                    {{ score.grand.4.id }}, {{ score.grand.3.id }}, {{ score.grand.2.id }}, {{ score.grand.1.id }}, {{ score.grand.0.id }}],
+                                                axisPointer: {
+                                                    type: 'shadow',
+                                                }
+                                            }
+                                        ],
+                                        yAxis: [
+                                            {
+                                                type: 'value',
+                                                name: '分数',
+                                                axisLabel: {
+                                                    formatter: '{value}'
+                                                }
+                                            },
+                                        ],
+                                        series: [
+                                            {
+                                                name: '分数',
+                                                type: 'bar',
+                                                color: '#6ee8d2',
+                                                data: [{{ score.grand.6.score }}, {{ score.grand.5.score }}, {{ score.grand.4.score }}, {{ score.grand.3.score }},
+                                                    {{ score.grand.2.score }}, {{ score.grand.1.score }}, {{ score.grand.0.score }}]
+                                            },
+                                            {
+                                                name: '分数',
+                                                color: '#e8666c',
+                                                type: 'line',
+                                                data: [{{ score.grand.6.score }}, {{ score.grand.5.score }}, {{ score.grand.4.score }}, {{ score.grand.3.score }},
+                                                    {{ score.grand.2.score }}, {{ score.grand.1.score }}, {{ score.grand.0.score }}]
+                                            }
+                                        ]
+                                    };
+
+
+                                    // 使用刚指定的配置项和数据显示图表。
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="polar-chart-example card">
+                            <div class="card-close">
+                                <div class="dropdown">
+                                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" class="dropdown-toggle"><i
+                                            class="fa fa-ellipsis-v"></i></button>
+                                    <div aria-labelledby="closeCard9"
+                                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                                 class="dropdown-item remove">
+                                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                            class="fa fa-gear"></i>Edit</a></div>
+                                </div>
+                            </div>
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">渐变测试</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                <div id="gradual" style="width: 500px;height:400px;"></div>
+                                <script type="text/javascript">
+                                    // 基于准备好的dom，初始化echarts实例
+                                    var myChart = echarts.init(document.getElementById('gradual'));
+
+                                    // 指定图表的配置项和数据
+                                    var option = {
+                                        dataset: {
+                                            source: [
+                                                ['score', 'score', 'id'],
+                                                [{{ score.guadual.6.score }}, {{ score.gradual.6.score }}, {{ score.gradual.6.id }}],
+                                                [{{ score.guadual.5.score }}, {{ score.gradual.5.score }}, {{ score.gradual.5.id }}],
+                                                [{{ score.guadual.4.score }}, {{ score.gradual.4.score }}, {{ score.gradual.4.id }}],
+                                                [{{ score.gradual.3.score }}, {{ score.gradual.3.score }}, {{ score.gradual.3.id }}],
+                                                [{{ score.gradual.2.score }}, {{ score.gradual.2.score }}, {{ score.gradual.2.id }}],
+                                                [{{ score.gradual.1.score }}, {{ score.gradual.1.score }}, {{ score.gradual.1.id }}],
+                                                [{{ score.gradual.0.score }}, {{ score.gradual.0.score }}, {{ score.gradual.0.id }}],
+                                            ]
+                                        },
+                                        grid: {containLabel: true},
+                                        xAxis: {name: '分数'},
+                                        yAxis: {name: '测试次数', type: 'category'},
+                                        visualMap: {
+                                            orient: 'horizontal',
+                                            left: 'center',
+                                            min: 0,
+                                            max: 100,
+                                            text: ['High Score', 'Low Score'],
+                                            // Map the score column to color
+                                            dimension: 0,
+                                            inRange: {
+                                                color: ['#D7DA8B', '#E15457']
+                                            }
+                                        },
+                                        series: [
+                                            {
+                                                type: 'bar',
+                                                encode: {
+                                                    // Map the "amount" column to X axis.
+                                                    x: 'score',
+                                                    // Map the "product" column to Y axis
+                                                    y: 'id'
+                                                }
+                                            }
+                                        ]
+                                    };        // 使用刚指定的配置项和数据显示图表。
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="polar-chart-example card">
+                            <div class="card-close">
+                                <div class="dropdown">
+                                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" class="dropdown-toggle"><i
+                                            class="fa fa-ellipsis-v"></i></button>
+                                    <div aria-labelledby="closeCard9"
+                                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                                 class="dropdown-item remove">
+                                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                            class="fa fa-gear"></i>Edit</a></div>
+                                </div>
+                            </div>
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">短暂测试</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                <div id="short" style="width: 400px;height:400px;"></div>
+                                <script type="text/javascript">
+                                    // 基于准备好的dom，初始化echarts实例
+                                    var myChart = echarts.init(document.getElementById('short'));
+                                    var option = {
+                                        legend: {
+                                            data: ['bar', 'bar2'],
+                                            align: 'left'
+                                        },
+                                        toolbox: {
+                                            // y: 'bottom',
+                                            feature: {
+                                                magicType: {
+                                                    type: ['stack', 'tiled']
+                                                },
+                                                dataView: {},
+                                                saveAsImage: {
+                                                    pixelRatio: 2
+                                                }
+                                            }
+                                        },
+                                        tooltip: {},
+                                        xAxis: {
+                                            name: '测试',
+                                            data: [{{ score.short.6.id }}, {{ score.short.5.id }}, {{ score.short.4.id }},
+                                                {{ score.short.3.id }}, {{ score.short.2.id }}, {{ score.short.1.id }}, {{ score.short.0.id }}],
+                                            silent: false,
+                                            splitLine: {
+                                                show: false
+                                            }
+                                        },
+                                        yAxis: {
+                                            name: '分数',
+                                        },
+                                        series: [{
+                                            name: '分数',
+                                            type: 'bar',
+                                            data: [{{ score.short.6.score }}, {{ score.short.5.score }}, {{ score.short.4.score }}, {{ score.short.3.score }},
+                                                {{ score.short.2.score }}, {{ score.short.1.score }}, {{ score.short.0.score }}],
+                                            animationDelay: function (idx) {
+                                                return idx * 10;
+                                            }
+                                        }],
+                                        animationEasing: 'elasticOut',
+                                        animationDelayUpdate: function (idx) {
+                                            return idx * 5;
+                                        }
+                                    };
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="polar-chart-example card">
+                            <div class="card-close">
+                                <div class="dropdown">
+                                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" class="dropdown-toggle"><i
+                                            class="fa fa-ellipsis-v"></i></button>
+                                    <div aria-labelledby="closeCard9"
+                                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                                 class="dropdown-item remove">
+                                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                            class="fa fa-gear"></i>Edit</a></div>
+                                </div>
+                            </div>
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">Stroop</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                <div id="stroop" style="width: 400px;height:350px;"></div>
+                                <script type="text/javascript">
+                                    // 基于准备好的dom，初始化echarts实例
+                                    var myChart = echarts.init(document.getElementById('stroop'));
+
+                                    // 指定图表的配置项和数据
+                                    var option = {
+                                        tooltip: {
+                                            trigger: 'axis',
+                                            axisPointer: {
+                                                type: 'cross',
+                                                crossStyle: {
+                                                    color: '#999'
+                                                }
+                                            }
+                                        },
+                                        toolbox: {
+                                            feature: {
+                                                dataView: {show: true, readOnly: false},
+                                                magicType: {show: true, type: ['line', 'bar']},
+                                                restore: {show: true},
+                                                saveAsImage: {show: true}
+                                            }
+                                        },
+                                        legend: {
+                                            data: ['分数', '分数']
+                                        },
+                                        xAxis: [
+                                            {
+                                                type: 'category',
+                                                name: '测试\n次数',
+                                                data: [{{ score.stroop.6.id }}, {{ score.stroop.5.id }},
+                                                    {{ score.stroop.4.id }}, {{ score.stroop.3.id }}, {{ score.stroop.2.id }}, {{ score.stroop.1.id }}, {{ score.stroop.0.id }}],
+                                                axisPointer: {
+                                                    type: 'shadow'
+                                                }
+                                            }
+                                        ],
+                                        yAxis: [
+                                            {
+                                                type: 'value',
+                                                name: '分数',
+                                                axisLabel: {
+                                                    formatter: '{value}'
+                                                }
+                                            },
+                                        ],
+                                        series: [
+                                            {
+                                                name: '分数',
+                                                type: 'bar',
+                                                data: [{{ score.stroop.6.score }}, {{ score.stroop.5.score }}, {{ score.stroop.4.score }}, {{ score.stroop.3.score }},
+                                                    {{ score.stroop.2.score }}, {{ score.stroop.1.score }}, {{ score.stroop.0.score }}]
+                                            },
+                                            {
+                                                name: '分数',
+                                                type: 'line',
+                                                data: [{{ score.stroop.6.score }}, {{ score.stroop.5.score }}, {{ score.stroop.4.score }}, {{ score.stroop.3.score }},
+                                                    {{ score.stroop.2.score }}, {{ score.stroop.1.score }}, {{ score.stroop.0.score }}]
+                                            }
+                                        ]
+                                    };
+
+
+                                    // 使用刚指定的配置项和数据显示图表。
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="polar-chart-example card">
+                            <div class="card-close">
+                                <div class="dropdown">
+                                    <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false" class="dropdown-toggle"><i
+                                            class="fa fa-ellipsis-v"></i></button>
+                                    <div aria-labelledby="closeCard9"
+                                         class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                                 class="dropdown-item remove">
+                                        <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                            class="fa fa-gear"></i>Edit</a></div>
+                                </div>
+                            </div>
+                            <div class="card-header d-flex align-items-center">
+                                <h3 class="h4">点探测</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                                <div id="point" style="width: 400px;height:350px;"></div>
+                                <script type="text/javascript">
+                                    // 基于准备好的dom，初始化echarts实例
+                                    var myChart = echarts.init(document.getElementById('point'));
+
+                                    // 指定图表的配置项和数据
+                                    var option = {
+                                        tooltip: {
+                                            trigger: 'axis',
+                                            axisPointer: {
+                                                type: 'cross',
+                                                crossStyle: {
+                                                    color: '#999'
+                                                }
+                                            }
+                                        },
+                                        toolbox: {
+                                            feature: {
+                                                dataView: {show: true, readOnly: false},
+                                                magicType: {show: true, type: ['line', 'bar']},
+                                                restore: {show: true},
+                                                saveAsImage: {show: true}
+                                            }
+                                        },
+                                        legend: {
+                                            data: ['分数', '分数']
+                                        },
+                                        xAxis: [
+                                            {
+                                                type: 'category',
+                                                name: '测试\n次数',
+                                                data: [{{ score.point.6.id }}, {{ score.point.5.id }},
+                                                    {{ score.point.4.id }}, {{ score.point.3.id }}, {{ score.point.2.id }}, {{ score.point.1.id }}, {{ score.point.0.id }}],
+                                                axisPointer: {
+                                                    type: 'shadow'
+                                                }
+                                            }
+                                        ],
+                                        yAxis: [
+                                            {
+                                                type: 'value',
+                                                name: '分数',
+                                                axisLabel: {
+                                                    formatter: '{value}'
+                                                }
+                                            },
+                                        ],
+                                        series: [
+                                            {
+                                                name: '分数',
+                                                type: 'bar',
+                                                data: [{{ score.point.6.score }}, {{ score.point.5.score }}, {{ score.point.4.score }}, {{ score.point.3.score }},
+                                                    {{ score.point.2.score }}, {{ score.point.1.score }}, {{ score.point.0.score }}]
+                                            },
+                                            {
+                                                name: '分数',
+                                                type: 'line',
+                                                data: [{{ score.point.6.score }}, {{ score.point.5.score }}, {{ score.point.4.score }}, {{ score.point.3.score }},
+                                                    {{ score.point.2.score }}, {{ score.point.1.score }}, {{ score.point.0.score }}]
+                                            }
+                                        ]
+                                    };
+
+
+                                    // 使用刚指定的配置项和数据显示图表。
+                                    myChart.setOption(option);
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+{% endblock %}

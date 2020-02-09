@@ -1,0 +1,41 @@
+{% extends 'web/login/base.html' %}
+{% block head %}{% endblock %}
+
+{% block content %}
+    <div class="page login-page">
+      <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+          <div class="row">
+            <!-- Logo & Information Panel-->
+            <div class="col-lg-6">
+              <div class="info d-flex align-items-center">
+                <div class="content">
+                  <div class="logo">
+                    <h1>抑郁症移动辅助治疗APP</h1>
+                  </div>
+                  <p>注册</p>
+                </div>
+              </div>
+            </div>
+            <!-- Form Panel    -->
+            <div class="col-lg-6 bg-white">
+              <div class="form d-flex align-items-center">
+                <div class="content">
+        <form	method="post" novalidate>
+            {%	csrf_token	%}
+            {{form.as_p}}
+            <button	type="submit"	class="btn	btn-primary">Create	an	account</button>
+        </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyrights text-center">
+        <p>Design by <a href="#" class="external">河北工业大学</a>
+          <!-- Please do not remove the backlink to us unless you support further theme's development at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+        </p>
+      </div>
+    </div>
+{% endblock %}

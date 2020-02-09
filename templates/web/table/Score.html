@@ -1,0 +1,173 @@
+{% extends 'web/table/base.html' %}
+{% load static %}
+{% block content %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-auto">
+                    <div class="polar-chart-example card">
+                        <div class="card-close">
+                            <div class="dropdown">
+                                <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" class="dropdown-toggle"><i
+                                        class="fa fa-ellipsis-v"></i></button>
+                                <div aria-labelledby="closeCard9"
+                                     class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                             class="dropdown-item remove">
+                                    <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                        class="fa fa-gear"></i>Edit</a></div>
+                            </div>
+                        </div>
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="h4">所有测试
+                                <button id="score" class="btn"><a
+                                        href="{% url 'web:table' %}"></a>测试平均分{{ data.0.depression_score }}</button>
+                            </h3>
+                            <div>更新时间:{{ data.0.update }}</div>
+                        </div>
+                        <div class="card-body">
+                            <a href='{% url 'web:grand' %}'>
+                                <button id='grand' class="btn">宏表情测试{{ data.0.grand }}</button>
+                            </a>
+                            <a href='{% url 'web:gradual' %}'>
+                                <button id='grand' class="btn">渐变测试{{ data.0.gradual }}</button>
+                            </a>
+                            <a href='{% url 'web:scale' %}'>
+                                <button id='grand' class="btn">量表测试{{ data.0.scale }}</button>
+                            </a>
+                            <a href='{% url 'web:point' %}'>
+                                <button id='grand' class="btn">点探测{{ data.0.point }}</button>
+                            </a>
+                            <a href='{% url 'web:stroop' %}'>
+                                <button id='grand' class="btn">Stroop测试{{ data.0.stroop }}</button>
+                            </a>
+                            <a href='{% url 'web:short' %}'>
+                                <button id='grand' class="btn">短暂测试{{ data.0.short }}</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-auto">
+                    <div class="polar-chart-example card">
+                        <div class="card-close">
+                            <div class="dropdown">
+                                <button type="button" id="closeCard9" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false" class="dropdown-toggle"><i
+                                        class="fa fa-ellipsis-v"></i></button>
+                                <div aria-labelledby="closeCard9"
+                                     class="dropdown-menu dropdown-menu-right has-shadow"><a href="#"
+                                                                                             class="dropdown-item remove">
+                                    <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i
+                                        class="fa fa-gear"></i>Edit</a></div>
+                            </div>
+                        </div>
+                        <div class="card-header d-flex align-items-center">
+                            <h3 class="h4">测试详情</h3>
+                        </div>
+                        <div class="card-body">
+                            <form action="{% url "web:table" %}" method="post">
+                                <div class="form-group" id="rowdiv">
+                                    <div class='col-4'>
+                                        <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+                                            <label for="timerange1"><strong>从</strong></label>
+                                            <input id="timerange1" name="timerange1" type="text"
+                                                   class="form-control datetimepicker-input"
+                                                   data-target="#datetimepicker7"/>
+
+                                            <div class="input-group-append" data-target="#datetimepicker7"
+                                                 data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class='col-4'>
+                                        <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+                                            <label for="timerange2"><strong>至</strong></label>
+                                            <input id="timerange2" name="timerange2" type="text"
+                                                   class="form-control datetimepicker-input"
+                                                   data-target="#datetimepicker8"/>
+
+                                            <div class="input-group-append" data-target="#datetimepicker8"
+                                                 data-toggle="datetimepicker">
+                                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit" id='timerange'>提交</button>
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="multi-filter-select" class="display table table-striped table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th># 测试id</th>
+                                            <th>测试类型</th>
+                                            <th>测试时间</th>
+                                            <th>分数</th>
+                                        </tr>
+                                        </thead>
+                                        <tfoot>
+                                        <tr>
+                                            <th># 测试id</th>
+                                            <th>测试类型</th>
+                                            <th>测试时间</th>
+                                            <th>分数</th>
+                                        </tr>
+                                        </tfoot>
+                                        <tbody>
+                                        {% for t in score.grand %}
+                                            <tr>
+                                                <td>{{ t.id }}</td>
+                                                <td>宏表情测试</td>
+                                                <td>{{ t.date }}</td>
+                                                <td>{{ t.score }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        {% for t in score.scale %}
+                                            <tr>
+                                                <td>{{ t.id }}</td>
+                                                <td>量表测试</td>
+                                                <td>{{ t.date }}</td>
+                                                <td>{{ t.score }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        {% for t in score.short %}
+                                            <tr>
+                                                <td>{{ t.id }}</td>
+                                                <td>短暂测试</td>
+                                                <td>{{ t.date }}</td>
+                                                <td>{{ t.score }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        {% for t in score.gradual %}
+                                            <tr>
+                                                <td>{{ t.id }}</td>
+                                                <td>渐变测试</td>
+                                                <td>{{ t.date }}</td>
+                                                <td>{{ t.score }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        {% for t in score.stroop %}
+                                            <tr>
+                                                <td>{{ t.id }}</td>
+                                                <td>Stroop测试</td>
+                                                <td>{{ t.date }}</td>
+                                                <td>{{ t.score }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        {% for t in score.point %}
+                                            <tr>
+                                                <td>{{ t.id }}</td>
+                                                <td>点探测</td>
+                                                <td>{{ t.date }}</td>
+                                                <td>{{ t.score }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
